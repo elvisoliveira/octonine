@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/downloadfeed.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/parsefeed.o
 
 
 # C Compiler Flags
@@ -62,10 +64,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/downloadfeed.o: downloadfeed.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/downloadfeed.o downloadfeed.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/parsefeed.o: parsefeed.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parsefeed.o parsefeed.cpp
 
 # Subprojects
 .build-subprojects:

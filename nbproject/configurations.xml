@@ -4,11 +4,15 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
+      <itemPath>downloadfeed.h</itemPath>
+      <itemPath>parsefeed.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
+      <itemPath>downloadfeed.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>parsefeed.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
@@ -40,7 +44,15 @@
           <commandLine>-lcurl</commandLine>
         </linkerTool>
       </compileType>
+      <item path="downloadfeed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="downloadfeed.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="parsefeed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="parsefeed.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -63,7 +75,15 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="downloadfeed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="downloadfeed.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="parsefeed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="parsefeed.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

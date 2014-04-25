@@ -1,8 +1,10 @@
 #ifndef DOWNLOADFEED_H
 #define	DOWNLOADFEED_H
 
-#include <curl/curl.h>
 #include <string>
+
+// #define CURL_STATICLIB
+#include <curl/curl.h>
 
 class downloadfeed {
 public:

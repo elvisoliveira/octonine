@@ -8,8 +8,8 @@
 #include <vector>
 #include <map>
 
-#include "rapidxml-1.13/rapidxml.hpp"
-#include "rapidxml-1.13/rapidxml_utils.hpp"
+#include <rapidxml-1.13/rapidxml.hpp>
+#include <rapidxml-1.13/rapidxml_utils.hpp>
 
 class parsefeed {
 public:

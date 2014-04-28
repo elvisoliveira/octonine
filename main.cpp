@@ -5,7 +5,7 @@
 
 int main(void) {
 
-    downloadfeed download("http://9gagrss.com/feed/");
+    downloadfeed download("http://web.archive.org/web/20130419104110/http://9gagrss.com/feed");
 
     std::string response = download.getDocument();
 

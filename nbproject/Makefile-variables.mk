@@ -22,14 +22,6 @@ CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/octonine
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
 CND_PACKAGE_NAME_Release=octonine.tar
 CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/octonine.tar
-# MinGW configuration
-CND_PLATFORM_MinGW=MinGW-Windows
-CND_ARTIFACT_DIR_MinGW=dist/MinGW/MinGW-Windows
-CND_ARTIFACT_NAME_MinGW=octonine
-CND_ARTIFACT_PATH_MinGW=dist/MinGW/MinGW-Windows/octonine
-CND_PACKAGE_DIR_MinGW=dist/MinGW/MinGW-Windows/package
-CND_PACKAGE_NAME_MinGW=octonine.tar
-CND_PACKAGE_PATH_MinGW=dist/MinGW/MinGW-Windows/package/octonine.tar
 #
 # include compiler specific variables
 #

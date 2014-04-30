@@ -16,7 +16,7 @@ parsefeed::parsefeed(const std::string & document) {
 	// parse the char using rapidXML
     doc.parse<0>(cstr);
 
-	std::vector <std::map<std::string, std::string>> example;
+	std::vector <std::map<std::string, std::string> > example;
 
     // loop feed itens
     for (rapidxml::xml_node<> * attr = doc.first_node("rss")->first_node("channel")->first_node("item"); attr; attr = attr->next_sibling()) {

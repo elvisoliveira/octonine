@@ -21,9 +21,9 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
+CND_PLATFORM=MinGW_TDM-Windows
 CND_DLIB_EXT=dll
-CND_CONF=Release
+CND_CONF=MinGW
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -54,7 +54,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L/C/Development/curl-7.36.0/lib -lcurl
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -62,22 +62,22 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine ${OBJECTFILES} ${LDLIBSOPTIONS} -lcurl
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/downloadfeed.o: downloadfeed.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/downloadfeed.o downloadfeed.cpp
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/downloadfeed.o downloadfeed.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/parsefeed.o: parsefeed.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/parsefeed.o parsefeed.cpp
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parsefeed.o parsefeed.cpp
 
 # Subprojects
 .build-subprojects:

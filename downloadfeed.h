@@ -2,9 +2,9 @@
 #define	DOWNLOADFEED_H
 
 #include <string>
-
-// #define CURL_STATICLIB
 #include <curl/curl.h>
+
+#define CURL_STATICLIB
 
 class downloadfeed {
 public:

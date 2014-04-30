@@ -5,6 +5,7 @@
 #include <string.h>
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 #include <vector>
 #include <map>
 
@@ -17,7 +18,6 @@ public:
 private:
     std::string input_xml;
     std::string line;
-
 };
 
 #endif

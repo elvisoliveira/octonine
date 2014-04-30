@@ -54,7 +54,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/C/Development/curl-7.36.0/lib -lcurl
+LDLIBSOPTIONS=-L/C/Development/curl-7.36.0/lib -lcurl -lcurl -lcurldll
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

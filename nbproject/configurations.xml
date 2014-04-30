@@ -51,6 +51,8 @@
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>curl</linkerLibLibItem>
+            <linkerLibLibItem>curl</linkerLibLibItem>
+            <linkerLibLibItem>curldll</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

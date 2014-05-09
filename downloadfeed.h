@@ -5,8 +5,8 @@
 #include <curl/curl.h>
 
 #define CURL_STATICLIB
-
-class downloadfeed {
+class downloadfeed
+{
 public:
     downloadfeed(const std::string & url);
     std::string getDocument();

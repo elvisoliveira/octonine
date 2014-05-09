@@ -37,14 +37,10 @@ parsefeed::parsefeed(const std::string & document) {
 
     }
 
-    for (int i = 0; i < example.size(); i++) {
+    parsefeed::output_vector = example;
 
-        std::cout << "[" << i << "]" << "[points]" << example.at(i)["points"] << std::endl;
-        std::cout << "[" << i << "]" << "[comments]" << example.at(i)["comments"] << std::endl;
-        std::cout << "[" << i << "]" << "[id]" << example.at(i)["id"] << std::endl;
-        std::cout << "[" << i << "]" << "[next]" << example.at(i)["next"] << std::endl;
-        std::cout << "[" << i << "]" << "[content]" << example.at(i)["content"] << std::endl;
-        std::cout << "[" << i << "]" << "[title]" << example.at(i)["title"] << std::endl;
+}
 
-    }
+std::vector <std::map<std::string, std::string> > parsefeed::getvector() {
+    return parsefeed::output_vector;
 }

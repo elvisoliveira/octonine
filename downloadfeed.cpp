@@ -1,6 +1,6 @@
 #include "downloadfeed.h"
 
-downloadfeed::downloadfeed(const std::string& url) {
+downloadfeed::downloadfeed(const std::string & url) {
 
     curl = curl_easy_init();
 

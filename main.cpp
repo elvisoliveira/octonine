@@ -1,3 +1,13 @@
+////////////////////////////////////////////////////////
+//    ____         _          _   _  _                //
+//   / __ \       | |        | \ | |(_)               //
+//  | |  | |  ___ | |_  ___  |  \| | _  _ __    ___   //
+//  | |  | | / __|| __|/ _ \ | . ` || || '_ \  / _ \  //
+//  | |__| || (__ | |_| (_) || |\  || || | | ||  __/  //
+//   \____/  \___| \__|\___/ |_| \_||_||_| |_| \___|  //
+//                                                    //
+////////////////////////////////////////////////////////
+
 #include <string.h>
 
 #include "downloadfeed.h"
@@ -5,7 +15,7 @@
 
 int main(void) {
 
-    downloadfeed download("http://elvisoliveira.com.br/sandbox/octopp/octopp.php");
+    downloadfeed download = downloadfeed("http://elvisoliveira.com.br/sandbox/octopp/octopp.php");
 
     std::string response = download.getDocument();
 

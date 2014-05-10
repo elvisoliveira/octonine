@@ -31,7 +31,7 @@ DEFAULTCONF=MinGW
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=MinGW 
+ALLCONFS=MinGW _nix 
 
 
 # build

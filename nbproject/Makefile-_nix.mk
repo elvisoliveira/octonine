@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
-CND_CONF=MinGW
+CND_CONF=_nix
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -54,7 +54,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/C/Development/curl-7.36.0/lib -lcurl -lcurl -lcurldll
+LDLIBSOPTIONS=-L/usr/include -L/usr/include/curl
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -62,22 +62,22 @@ LDLIBSOPTIONS=-L/C/Development/curl-7.36.0/lib -lcurl -lcurl -lcurldll
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine ${OBJECTFILES} ${LDLIBSOPTIONS} -lcurl
 
 ${OBJECTDIR}/downloadfeed.o: downloadfeed.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/downloadfeed.o downloadfeed.cpp
+	$(COMPILE.cc) -g -I/usr/include/curl -I/usr/include/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/downloadfeed.o downloadfeed.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/usr/include/curl -I/usr/include/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/parsefeed.o: parsefeed.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parsefeed.o parsefeed.cpp
+	$(COMPILE.cc) -g -I/usr/include/curl -I/usr/include/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parsefeed.o parsefeed.cpp
 
 # Subprojects
 .build-subprojects:

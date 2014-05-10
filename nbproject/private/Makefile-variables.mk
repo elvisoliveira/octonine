@@ -4,3 +4,4 @@
 # NOCDDL
 #
 # MinGW configuration
+# _nix configuration

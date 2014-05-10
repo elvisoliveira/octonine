@@ -15,6 +15,10 @@
                     <name>MinGW</name>
                     <type>1</type>
                 </confElem>
+                <confElem>
+                    <name>_nix</name>
+                    <type>1</type>
+                </confElem>
             </confList>
             <formatting>
                 <project-formatting-style>false</project-formatting-style>

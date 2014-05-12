@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW_TDM-Windows
+CND_DLIB_EXT=dll
 CND_CONF=_nix
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/908980938/downloadimage.o \
 	${OBJECTDIR}/downloadfeed.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/parsefeed.o
@@ -58,11 +59,16 @@ LDLIBSOPTIONS=-L/usr/include -L/usr/include/curl
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine ${OBJECTFILES} ${LDLIBSOPTIONS} -lcurl
+
+${OBJECTDIR}/_ext/908980938/downloadimage.o: /C/Development/projects/octonine/downloadimage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/908980938
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/curl -I/usr/include/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/908980938/downloadimage.o /C/Development/projects/octonine/downloadimage.cpp
 
 ${OBJECTDIR}/downloadfeed.o: downloadfeed.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -85,7 +91,7 @@ ${OBJECTDIR}/parsefeed.o: parsefeed.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine.exe
 
 # Subprojects
 .clean-subprojects:

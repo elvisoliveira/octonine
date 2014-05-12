@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW_TDM-Windows
+CND_DLIB_EXT=dll
 CND_CONF=MinGW
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/908980938/downloadimage.o \
 	${OBJECTDIR}/downloadfeed.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/parsefeed.o
@@ -54,30 +55,35 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/C/Development/curl-7.36.0/lib -lcurl -lcurl -lcurldll
+LDLIBSOPTIONS=-L/C/development/curl-7.36.0/lib -lcurl -lcurl -lcurldll
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/908980938/downloadimage.o: /C/Development/projects/octonine/downloadimage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/908980938
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -s -I/C/development/curl-7.36.0/include -I/C/development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/908980938/downloadimage.o /C/Development/projects/octonine/downloadimage.cpp
 
 ${OBJECTDIR}/downloadfeed.o: downloadfeed.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/downloadfeed.o downloadfeed.cpp
+	$(COMPILE.cc) -g -s -I/C/development/curl-7.36.0/include -I/C/development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/downloadfeed.o downloadfeed.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -s -I/C/development/curl-7.36.0/include -I/C/development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/parsefeed.o: parsefeed.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/C/Development/curl-7.36.0/include -I/C/Development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parsefeed.o parsefeed.cpp
+	$(COMPILE.cc) -g -s -I/C/development/curl-7.36.0/include -I/C/development/rapidxml -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parsefeed.o parsefeed.cpp
 
 # Subprojects
 .build-subprojects:
@@ -85,7 +91,7 @@ ${OBJECTDIR}/parsefeed.o: parsefeed.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/octonine.exe
 
 # Subprojects
 .clean-subprojects:

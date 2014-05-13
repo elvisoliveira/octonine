@@ -1,50 +1,90 @@
 #include "downloadimage.h"
 
+size_t write_data(void * ptr, size_t size, size_t nmemb, FILE * stream) {
+    size_t written;
+    written = fwrite(ptr, size, nmemb, stream);
+    return written;
+}
+
+static bool filewriterFlag = false;
+
+static int fileWriter(char * data, size_t size, size_t nmemb, FILE * stream) {
+    filewriterFlag = true;
+    return fwrite(data, size, nmemb, stream);
+}
+
 downloadimage::downloadimage(std::string url) {
 
-    CURL * image;
-    CURLcode imgresult;
+    std::vector<std::string> elems = downloadimage::explode(url);
+
+    std::string outputFile = "C:\\development\\projects\\octonine\\files\\" + elems[elems.size() - 1];
+
+    std::cout << outputFile;
+
+    CURL * curl;
     FILE * fp;
+    CURLcode res;
+    const char * urld = url.c_str();
+    const char * outfilename = outputFile.c_str();
 
     curl = curl_easy_init();
 
     if (curl) {
 
-        if (fp == NULL) {
-            std::cout << "File cannot be opened";
-        }
-
-        char * addr = NULL;
-        
-        strcpy(addr, url.c_str());
-
-        char * external = addr;
-        char outfilename[FILENAME_MAX] = "C:\\development\\projects\\octonine\\tech.jpg";
+        filewriterFlag = false;
 
         fp = fopen(outfilename, "wb");
 
-        // init cURL params
-        curl_easy_setopt(curl, CURLOPT_URL, external);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
-
-        // Grab image 
-        imgresult = curl_easy_perform(image);
-
-        if (imgresult) {
-            std::cout << "Cannot grab the image!\n";
+        if (fp == NULL) {
+            curl_easy_cleanup(curl);
         }
 
-        // clean cURL request
+        curl_easy_setopt(curl, CURLOPT_URL, urld);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, fileWriter);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+
+        res = curl_easy_perform(curl);
+
         curl_easy_cleanup(curl);
 
         fclose(fp);
-
     }
+
+    if (!filewriterFlag)
+        remove(outfilename);
+
 }
 
-size_t write_data(void * ptr, size_t size, size_t nmemb, FILE * stream) {
-    size_t written;
-    written = fwrite(ptr, size, nmemb, stream);
-    return written;
+std::vector<std::string> downloadimage::explode(std::string text) {
+    int i = 0;
+    char ch;
+
+    std::string word;
+    std::vector<std::string> words;
+
+    std::string str = "/";
+
+    while (ch = text[i++]) {
+
+        std::stringstream ss;
+        std::string s;
+
+        ss << ch;
+        ss >> s;
+
+        if (strcmp(s.c_str(), str.c_str()) == 0) {
+            if (!word.empty()) {
+                words.push_back(word);
+            }
+            word = "";
+        } else {
+            word += ch;
+        }
+    }
+    if (!word.empty()) {
+        words.push_back(word);
+    }
+
+    return words;
+
 }

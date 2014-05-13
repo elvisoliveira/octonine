@@ -9,17 +9,19 @@
 ////////////////////////////////////////////////////////
 
 #include <string.h>
-
 #include "downloadfeed.h"
+#include "downloadimage.h"
 #include "parsefeed.h"
 
 int main(void) {
 
-    downloadfeed download = downloadfeed("http://elvisoliveira.com.br/sandbox/octopp/octopp.php");
-
-    std::string response = download.getDocument();
-
-    parsefeed parse(response);
+//    downloadfeed download = downloadfeed("http://elvisoliveira.com.br/sandbox/octopp/octopp.php");
+//
+//    std::string response = download.getDocument();
+//
+//    parsefeed parse(response);
+    
+    downloadimage image = downloadimage("http://g-ecx.images-amazon.com/images/G/02/gno/beacon/BeaconSprite-UK-02._V397961423_.png");
 
     return 0;
 

@@ -17,14 +17,16 @@ downloadimage::downloadimage(std::string url) {
 
     std::vector<std::string> elems = downloadimage::explode(url);
 
-    std::string outputFile = "C:\\development\\projects\\octonine\\files\\" + elems[elems.size() - 1];
+    std::string image = elems[elems.size() - 1];
+    
+    std::string download = "http://elvisoliveira.com.br/sandbox/octopp/octopp-image.php?image=" + image;
 
-    std::cout << outputFile;
+    std::string outputFile = "C:\\development\\projects\\octonine\\files\\" + image;
 
     CURL * curl;
     FILE * fp;
     CURLcode res;
-    const char * urld = url.c_str();
+    const char * urld = download.c_str();
     const char * outfilename = outputFile.c_str();
 
     curl = curl_easy_init();

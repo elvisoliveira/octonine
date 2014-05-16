@@ -20,8 +20,8 @@ int main(void) {
 //    std::string response = download.getDocument();
 //
 //    parsefeed parse(response);
-    
-    downloadimage image = downloadimage("http://g-ecx.images-amazon.com/images/G/02/gno/beacon/BeaconSprite-UK-02._V397961423_.png");
+//
+//    downloadimage image = downloadimage("http://g-ecx.images-amazon.com/images/G/02/gno/beacon/BeaconSprite-UK-02._V397961423_.png");
 
     return 0;
 

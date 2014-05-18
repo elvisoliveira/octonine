@@ -1,6 +1,7 @@
 #include "downloadimage.h"
 
-size_t write_data(void * ptr, size_t size, size_t nmemb, FILE * stream) {
+size_t write_data(void * ptr, size_t size, size_t nmemb, FILE * stream)
+{
     size_t written;
     written = fwrite(ptr, size, nmemb, stream);
     return written;
@@ -8,25 +9,41 @@ size_t write_data(void * ptr, size_t size, size_t nmemb, FILE * stream) {
 
 static bool filewriterFlag = false;
 
-static int fileWriter(char * data, size_t size, size_t nmemb, FILE * stream) {
+static int fileWriter(char * data, size_t size, size_t nmemb, FILE * stream)
+{
     filewriterFlag = true;
     return fwrite(data, size, nmemb, stream);
 }
 
-downloadimage::downloadimage(std::string url) {
+downloadimage::downloadimage(std::string url)
+{
 
-    std::vector<std::string> elems = downloadimage::explode(url);
+    std::string urlsplitter = "/";
 
-    std::string image = elems[elems.size() - 1];
-    
+    std::vector<std::string> urlelements = downloadimage::explode(url, urlsplitter);
+
+    std::string image = urlelements[urlelements.size() - 1];
+
     std::string download = "http://elvisoliveira.com.br/sandbox/octopp/octopp-image.php?image=" + image;
 
-    std::string outputFile = "C:\\development\\projects\\octonine\\files\\" + image;
+    std::string tempofolder = getenv("APPDATA");
+
+    std::string filesplitter = ".";
+
+    std::vector<std::string> fileelements = downloadimage::explode(image, filesplitter);
+
+    std::string fileformat = fileelements[1];
+
+    std::string outputFile = tempnam(tempofolder.c_str(), fileformat.c_str());
 
     CURL * curl;
+
     FILE * fp;
+
     CURLcode res;
+
     const char * urld = download.c_str();
+
     const char * outfilename = outputFile.c_str();
 
     curl = curl_easy_init();
@@ -57,14 +74,13 @@ downloadimage::downloadimage(std::string url) {
 
 }
 
-std::vector<std::string> downloadimage::explode(std::string text) {
+std::vector<std::string> downloadimage::explode(std::string text, std::string str)
+{
     int i = 0;
     char ch;
 
     std::string word;
     std::vector<std::string> words;
-
-    std::string str = "/";
 
     while (ch = text[i++]) {
 
@@ -79,7 +95,8 @@ std::vector<std::string> downloadimage::explode(std::string text) {
                 words.push_back(word);
             }
             word = "";
-        } else {
+        }
+        else {
             word += ch;
         }
     }

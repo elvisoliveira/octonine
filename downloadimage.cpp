@@ -28,13 +28,7 @@ downloadimage::downloadimage(std::string url)
 
     std::string tempofolder = getenv("APPDATA");
 
-    std::string filesplitter = ".";
-
-    std::vector<std::string> fileelements = downloadimage::explode(image, filesplitter);
-
-    std::string fileformat = fileelements[1];
-
-    std::string outputFile = tempnam(tempofolder.c_str(), fileformat.c_str());
+    std::string outputFile = tempnam(tempofolder.c_str(), "octonine_");
 
     CURL * curl;
 
@@ -48,13 +42,15 @@ downloadimage::downloadimage(std::string url)
 
     curl = curl_easy_init();
 
-    if (curl) {
+    if (curl)
+    {
 
         filewriterFlag = false;
 
         fp = fopen(outfilename, "wb");
 
-        if (fp == NULL) {
+        if (fp == NULL)
+        {
             curl_easy_cleanup(curl);
         }
 
@@ -70,8 +66,31 @@ downloadimage::downloadimage(std::string url)
     }
 
     if (!filewriterFlag)
+    {
         remove(outfilename);
+    }
 
+    // setup file parameters
+
+    std::string filesplitter = ".";
+
+    std::vector<std::string> fileelements = downloadimage::explode(image, filesplitter);
+
+    std::map<std::string, std::string> file;
+
+    file["name"] = fileelements[0];
+
+    file["format"] = fileelements[1];
+
+    file["location"] = outputFile;
+
+    downloadimage::imageInfo = file;
+
+}
+
+std::map<std::string, std::string> downloadimage::getImageInfo()
+{
+    return downloadimage::imageInfo;
 }
 
 std::vector<std::string> downloadimage::explode(std::string text, std::string str)
@@ -82,7 +101,8 @@ std::vector<std::string> downloadimage::explode(std::string text, std::string st
     std::string word;
     std::vector<std::string> words;
 
-    while (ch = text[i++]) {
+    while (ch = text[i++])
+    {
 
         std::stringstream ss;
         std::string s;
@@ -90,17 +110,21 @@ std::vector<std::string> downloadimage::explode(std::string text, std::string st
         ss << ch;
         ss >> s;
 
-        if (strcmp(s.c_str(), str.c_str()) == 0) {
-            if (!word.empty()) {
+        if (strcmp(s.c_str(), str.c_str()) == 0)
+        {
+            if (!word.empty())
+            {
                 words.push_back(word);
             }
             word = "";
         }
-        else {
+        else
+        {
             word += ch;
         }
     }
-    if (!word.empty()) {
+    if (!word.empty())
+    {
         words.push_back(word);
     }
 

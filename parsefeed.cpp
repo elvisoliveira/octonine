@@ -3,7 +3,8 @@
 
 #include "parsefeed.h"
 
-parsefeed::parsefeed(const std::string & document) {
+parsefeed::parsefeed(const std::string & document)
+{
     // convert returned document string in char
     char * cstr = new char[document.size() + 1];
 
@@ -19,7 +20,8 @@ parsefeed::parsefeed(const std::string & document) {
     std::vector <std::map<std::string, std::string> > example;
 
     // loop feed itens
-    for (rapidxml::xml_node<> * attr = doc.first_node("articles")->first_node("article"); attr; attr = attr->next_sibling()) {
+    for (rapidxml::xml_node<> * attr = doc.first_node("articles")->first_node("article"); attr; attr = attr->next_sibling())
+    {
 
         // create the basic hashmap
         std::map<std::string, std::string> postMap;
@@ -41,6 +43,7 @@ parsefeed::parsefeed(const std::string & document) {
 
 }
 
-std::vector <std::map<std::string, std::string> > parsefeed::getvector() {
+std::vector <std::map<std::string, std::string> > parsefeed::getvector()
+{
     return parsefeed::output_vector;
 }
